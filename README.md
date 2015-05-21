@@ -42,37 +42,55 @@ Create IBOutlets and actions for the elements
 
 1. Enable Assistant Editor (which will open ViewController.swift)
 2. Create @IBOutlet for UITableView by control+drag to the file from table view
+ 
 
     @IBOutlet weak var CounterLabel: UILabel!
+    
     
 3. Initialize the below variables
 
     var Counter : Int = 0 // Counter is start the conter 
+    
     var Timer : NSTimer = NSTimer() // Initialize the Timer instance where we will use the second interval from it
+
 4. Add the below statement in override func viewDidLoad()
 
     CounterLabel.text = String(Counter)
-
+    
 5. Add actions code the Play, Pause and Reset buttons
     
     @IBAction func StartCounter(sender: AnyObject) {
+
         Timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("UpdateCounter"), userInfo: nil, repeats: true)
+        
     }
     
     // UpdateCounter is function to increment the counter and we call use this function in above StartCounter action
+    
     func UpdateCounter(){
+    
         CounterLabel.text = String(Counter++)
+        
     }
+    
     
     @IBAction func PauseCounter(sender: AnyObject) {
+    
         Timer.invalidate()
+        
     }
     
+    
     @IBAction func ResetCounter(sender: AnyObject) {
+    
         Timer.invalidate()
+        
         Counter = 0
+        
         CounterLabel.text = String(Counter)
+        
     }
+    
 
 
 6. Save it and Run
